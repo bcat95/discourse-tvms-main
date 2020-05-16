@@ -1,0 +1,167 @@
+// MAIN
+ins.adsbygoogle {
+    background-color: initial;
+}
+// header
+.docked .d-header {
+    @media only screen and (max-width: 601px){
+        position: relative;
+    }
+}
+.d-header .title {
+    min-width: 96px;
+}
+
+// topic
+.topic-category .badge-wrapper {
+    font-size: 13px;
+    border-radius: 3px;
+    overflow: hidden;
+    line-height: 1.3;
+    padding: 2px 4px;
+}
+.badge-wrapper.box span {
+    border-radius: 3px;
+}
+
+.topic-thumbnail img {
+    border-radius: 12px;
+}
+.topic-list>tbody>tr:nth-child(odd) {
+    background: #fcfcfc;
+}
+#topic-title h1 a{
+    font-size: 36px;
+    font-weight: 400;
+    @media only screen and (max-width: 601px){
+        font-size:18px;
+    }
+   
+}
+.topic-body{
+    .cooked {
+        font-size: 16px;
+        @media only screen and (max-with:601px){
+            font-size:14px;
+        }
+    }   
+} 
+
+.d-toc-regular .d-toc .d-toc-subheading li {
+    font-size: 1rem;
+}
+
+.fixed-bottom,
+.fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+// orther
+.fixed-bottom {
+    bottom: 0;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.fixed-bottom-bar {
+    position: fixed;
+    height: 85px;
+    width: 100%;
+    bottom: 0;
+    z-index: 80;
+    background-color: #fff;
+    padding: .5rem 0;
+    box-shadow: 0 -1px 5px 1px rgba(0, 0, 0, .15);
+    .wrapper {
+	    display: flex;
+	    align-items: center;
+	    margin: 0 auto;
+	    max-width: 1110px;
+	    height: 100%;
+	    .logo {
+		    max-width: 150px;
+		    height: 45px;
+		    img {
+			    width: 100%;
+			    height: 100%;
+			}
+		}
+		.content {
+		    width: 850px;
+		}
+	}
+	.title {
+	    color: #5488c7;
+	    font-size: 1.25rem;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	}
+	.text {
+	    font-size: 1rem;
+	}
+}
+
+
+.d-none {
+    display: none !important;
+}
+@media (min-width: 992px){
+    .d-lg-block {
+        display: block!important;
+    }
+}
+// COLOR
+
+[data-background-color="#D42452"]{
+    background: #D42452;
+}
+
+// HIDE CATEGORY
+.category-ma-giam-gia tr.category-ma-giam-gia-voucher, #list-area tr.category-ma-giam-gia-voucher{
+    display: none;
+}
+
+// mobile-view
+.mobile-view {
+    .topic-list {
+        .topic-thumbnail {
+            background: rgba(0,0,0,.1);
+            position: relative;
+            width: 21.3333333%;
+            &:before{
+                content: "";
+                display: block;
+                padding-bottom: 100%;
+            }
+            img{
+                height: 100%;
+                left: 0;
+                -o-object-fit: cover;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+// topic-thumbnails
+.topic-thumbnails-list .topic-list-thumbnail .main-thumbnail, .topic-thumbnails-grid .topic-list-thumbnail .main-thumbnail, .topic-thumbnails-masonry .topic-list-thumbnail .main-thumbnail {
+    object-fit: cover !important;
+}
+
+.topic-thumbnails-grid .topic-list-thumbnail .background-thumbnail, .topic-thumbnails-masonry .topic-list-thumbnail .background-thumbnail {
+    display: none;
+}
+
+// footer
