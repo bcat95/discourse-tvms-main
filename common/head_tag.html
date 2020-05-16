@@ -1,0 +1,96 @@
+<script data-ad-client="ca-pub-1423692852714364" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/discourse-plugin" version="0.8">
+    // Automatically open external links in new tab or window
+    api.onPageChange((url, title) => {
+        $(window).on("load",function(){
+            var links = document.links;
+            for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+                if (links[i].hostname != window.location.hostname) {
+                    links[i].target = '_blank';
+                }
+            }
+        });
+    });
+</script>
+
+<script type="text/discourse-plugin" version="0.8">
+    // amp head
+    api.onPageChange((url, title) => {
+        var res = url.match(/\/t\/(.*?)\/(\w+)/);
+        if (res && res[2] > 0) {
+            var amp = 'https://amp.thuvienmuasam.com/t/'+res[1]+'/'+res[2];
+            if (document.getElementById("amphtml")) document.getElementById("amphtml").href = amp;
+            else{
+                var link=document.createElement('link');
+                link.id='amphtml';
+                link.rel='amphtml';
+                link.href=amp;
+                document.getElementsByTagName('head')[0].appendChild(link);
+            }
+        }
+    });
+</script>
+
+<script type="text/discourse-plugin" version="0.8">
+    // auto ads on post
+    api.onPageChange((url, title) => {
+        var res = url.match(/\/t\/(.*?)\/(\w+)/);
+        if (res && res[2] > 0) {
+            var datac='<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-1423692852714364" data-ad-slot="1997147499"></ins> <script>  (adsbygoogle = window.adsbygoogle || []).push({});  <\/script>';
+            setTimeout(function(){
+    		    var ele = document.querySelectorAll(".cooked>*");
+    		    var height=0;
+    		    for (var i = 0; i < ele.length; i++) {
+    		    	height+=ele[i].offsetHeight;
+    		        if (height>800){
+    		            ele[i].insertAdjacentHTML('afterend',datac);
+    		            height=0;
+    		        }
+    		    }
+    		}, 2000);
+        }
+    });
+</script>
+
+<script type="text/discourse-plugin" version="0.8">
+    // createWidget DACA
+    const h = require("virtual-dom").h;
+    api.createWidget("DMCABadgeHelper", {
+        tagName: "div.DMCABadgeHelper",
+        settings: {
+            href: document.location.href
+        },
+        href() {
+            const href = this.settings.href;
+            return typeof href === "function" ? href() : href;
+        },
+        html() {
+            return h('div', [
+                h('a.dmca-badge', {
+                    href:'https://www.dmca.com/Protection/Status.aspx?ID=fa78e68e-ff49-44e4-8fdf-c79612417db2&refurl='+this.settings.href,
+                    title: 'DMCA.com Protection Status',
+                    class: 'dmca-badge'
+                }, h('img',{
+                    src:'//images.dmca.com/Badges/dmca_protected_sml_120am.png?ID=fa78e68e-ff49-44e4-8fdf-c79612417db2',
+                    alt:'DMCA.com Protection Status'
+                })),
+            ]);
+        }
+    });
+
+    api.onPageChange((url, title) => {
+        $('.DMCABadgeHelper a.dmca-badge').attr('href','https://www.dmca.com/Protection/Status.aspx?ID=fa78e68e-ff49-44e4-8fdf-c79612417db2&refurl=https://thuvienmuasam.com'+url);
+    });
+</script>
+
+<script type="text/x-handlebars" data-template-name="/connectors/below-footer/fancy-footer">
+<div class="footer">
+    <div class="wrap">
+        <div class="flexbox">
+            <div class="footer-right">
+              {{mount-widget widget="DMCABadgeHelper"}}
+            </div>
+        </div>
+    </div>
+</div>
+</script>
